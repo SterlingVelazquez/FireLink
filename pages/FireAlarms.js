@@ -56,7 +56,7 @@ class FireAlarms extends React.Component {
   }
 
   async signIn() {
-    this.setState({user : await firebase.auth().signInWithPopup(provider)});
+    this.setState({user : await firebase.auth().signInWithRedirect(provider)});
     if (this.state.user !== null) {
       this.setState({
         email : this.state.user.additionalUserInfo.profile.email,
