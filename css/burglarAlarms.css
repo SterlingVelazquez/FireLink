@@ -1,0 +1,229 @@
+.burgIntroDiv {
+    position:relative;
+    display:inline-block;
+    width:100%;
+    padding:4rem 2rem 2rem 2rem;
+    background:linear-gradient(rgb(234, 248, 255) 0%,rgb(242, 247, 248) 47%,rgb(239, 246, 248) 100%);
+    border-bottom: 10px black gray;
+}
+
+.burgIntroDiv .burgIntroContainer {
+    position:relative;
+    padding:0 1rem;
+    width:48%;
+}
+
+.burgIntroContainer .burgIntroHeader {
+    font-family:'Rokkitt', serif;
+    font-size:60px;
+    font-weight:800;
+    padding:0rem 0;
+    text-shadow:2px 2px 3px rgb(180, 180, 180);
+    color:rgb(6, 6, 88);
+}
+
+.burgIntroContainer .burgIntroSub {
+    font-size:23px;
+    font-weight:900;
+    padding-bottom:1.5rem;
+    text-shadow:1px 1px 5px rgb(180, 180, 180);
+}
+
+.burgIntroContainer .burgIntroBody {
+    font-size:20px;
+    text-shadow:1px 1px 1px rgb(180, 180, 180);
+}
+
+.burgIntroDiv .burgIntroImg {
+    position:absolute;
+    top:80px;
+    left:57vw;
+    width:550px;
+    height:auto;
+    animation: burgImgSlideLeft 1.5s ease-in-out;
+}
+
+.burgFilesContainer {
+    position:relative;
+    display:inline-block;
+    vertical-align:top;
+    width:800px;
+    margin:5rem 0rem 5rem 1rem;
+    padding:0rem 0rem;
+    border:thin solid rgb(207, 207, 207);
+    border-radius:20px;
+    background-color:white;
+}
+
+.burgFile {
+    position:relative;
+    display:block;
+    margin-top:0px;
+    width:96%;
+    padding:1rem;
+    background-color:rgb(255, 255, 255);
+    border-bottom:thin solid rgb(207, 207, 207);
+    border-radius:20px;
+    background-color:none;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.burgFile:hover {
+    background:linear-gradient(rgb(255, 255, 255) 0%,rgb(251, 251, 251) 47%,rgb(247, 254, 255) 100%);
+    color:rgb(58, 176, 255);
+}
+
+.burgFile:active {
+    background:linear-gradient(rgb(255, 255, 255) 0%,rgb(243, 243, 243) 47%,rgb(231, 231, 231) 100%);
+}
+
+.file {
+    font-size:20px;
+}
+
+.smallDetails {
+    font-size:13px;
+    color:rgb(85, 85, 85);
+}
+
+.eraseFile {
+    position:absolute;
+    display:none;
+    left:94.5%;
+    top:30%;
+    width:30px;
+    border-radius:8px;
+    color:rgb(153, 153, 153);
+    cursor:pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.eraseFile:hover {
+    box-shadow:inset 3px 3px 30px rgb(255, 167, 167);
+}
+
+.eraseFile:active {
+    box-shadow:inset 3px 3px 30px rgb(251, 68, 68);
+}
+
+.burgSignIn {
+    display:inline-block;
+    vertical-align:top;
+    width:200px;
+    text-align:center;
+    border:thin solid rgb(204, 204, 204);
+    border-radius:20px;
+    background-color:rgb(250, 250, 250);
+    color:rgb(75, 75, 75);
+    margin:5rem 0rem 5rem 2rem;
+    padding:1rem;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.burgSignIn:hover {
+    color:rgb(46, 46, 46);
+    background:rgb(252, 255, 255);
+}
+
+.burgSideContainer {
+    display:none;
+    vertical-align:top;
+    text-align:center;
+    width:230px;
+    margin:5rem 0rem 5rem 1rem;
+    padding:1rem 0;
+}
+
+.addFile {
+    margin-left:6.6%;
+    color: transparent;
+    font-family:'Noto Sans JP', sans-serif;
+  }
+
+.addFile::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+.addFile::before {
+    content: 'Upload File(s)';
+    color: rgb(26, 35, 105);
+    display: inline-block;
+    background: white;
+    border: 1px solid rgb(191, 231, 255);
+    border-radius: 20px;
+    padding: 8px 60px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px 1px rgb(221, 221, 221);
+    box-shadow:3px 3px 5px lightgray;
+    font-weight: 400;
+    font-size: 18px;
+    transition:0.5s;
+    cursor:pointer;
+  }
+
+.addFile:hover::before {
+    background: rgb(210, 233, 255);
+  }
+
+.addFile:active {
+    outline: 0;
+  }
+
+.addFile:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }
+
+.signOut {
+    font-size:18px;
+    margin-left:14%;
+    margin-top:-4%;
+    text-shadow:1px 1px 1px lightgray;
+    color:rgb(110, 110, 110);
+    transition:0.3s;
+    cursor:pointer;
+  }
+
+.signOut:hover {
+    font-size:20px;
+    color:rgb(255, 133, 133);
+  }
+
+.signOut:active {
+    font-size:22px;
+    color:rgb(255, 71, 71);
+  }
+
+.addForm ::-webkit-scrollbar {
+    width:6px;
+    height:3px;
+    border-left:0;
+    background:rgba(0,0,0,0.1);
+  }
+
+.addForm ::-webkit-scrollbar-track {
+    background:none;
+  }
+
+.addForm ::-webkit-scrollbar-thumb {
+    background:rgba(124, 124, 124, 0.8);
+    border-radius:10;
+  }
+
+@keyframes burgImgSlideLeft {
+    from { 
+          opacity: 0;
+          left:55vw
+      }
+      to {
+          opacity: 1;
+          left: 57vw
+      }
+}

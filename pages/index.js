@@ -5,6 +5,17 @@ import "./_app.js"
 
 class Home extends React.Component {
 
+  toggleActive() {
+    document.getElementById("servicesDrop").classList.toggle("active");
+  }
+
+  scrollDown() {
+    window.scrollTo({
+      top:1000,
+      behavior:'smooth'
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -18,18 +29,24 @@ class Home extends React.Component {
 
         <div className="navigationBar">
           <img src="customLogo.png"></img>
-          <div className="dropdown">
+          <div id="servicesDrop" className="dropdown" onClick={e => this.toggleActive()}>
             <button><b>SERVICES</b>
               <img src="down-arrow.png" className="downArrow"></img>
             </button> 
-            {/*<div className="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-    </div>*/}
+            <div className="dropdown-content">
+              <Link href="/BurglarAlarms">
+                <a href="#"><b>Burglar Alarm Systems</b></a>
+              </Link>
+              <Link href="/FireAlarms">
+                <a href="#"><b>Fire Alarm Systems</b></a>
+              </Link>
+              <Link href="/MassSystems">
+                <a href="#"><b>Mass Notification Systems</b></a>
+              </Link>
+            </div>
           </div> 
-          <button><b>PRODUCTS</b></button> 
-          <button><b>CONTACT US</b></button> 
+          <button><a href="https://www.kidde-esfire.com/" target="_blank"><b>PRODUCTS</b></a></button> 
+          <button onClick={e => this.scrollDown()}><b>CONTACT US</b></button> 
         </div>
 
         <div className="introDiv">
