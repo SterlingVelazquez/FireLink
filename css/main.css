@@ -100,13 +100,9 @@ body {
   }
 .dropdown.active .dropdown-content {
     height:145px;
-    border-bottom:2px solid lightblue;
     background:linear-gradient(rgb(234, 248, 255) 0%,rgb(247, 248, 248) 47%,rgb(251, 251, 251) 100%);
     font-size:16px;
     pointer-events:all;
-}
-.dropdown.active .dropdown-content a {
-    border-bottom:2px solid lightblue;
 }
 
 .navigationBar .menuBtn {
@@ -814,6 +810,7 @@ button {
         margin-left:30%;
     }
     .dropdown-content {
+        display:none;
         right:-28%;
         top:94px;
     }
