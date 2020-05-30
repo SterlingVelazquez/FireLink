@@ -175,9 +175,7 @@ class BurglarAlarms extends React.Component {
             <img src="customLogo.png"></img>
           </Link>
           <div id="servicesSideDrop" className="sideDropdown" onClick={e => this.toggleSideActive()}>
-            <button style={{top:"50px"}}><b>SERVICES</b>
-              <img src="down-arrow.png" className="sideDownArrow"></img>
-            </button> 
+            <button style={{top:"50px"}}><b>SERVICES</b></button> 
             <div className="sideDropdown-content">
               <Link href="/BurglarAlarms">
                 <a href="#"><b>Burglar Alarm Systems</b></a>
@@ -233,7 +231,7 @@ class BurglarAlarms extends React.Component {
 
         <div className="contactDiv">
           <p className="contactHeader">Contact Us</p>
-          <div style={{paddingLeft:"100px"}} className="contactContainer">
+          <div className="contactContainer">
             <a href="tel:+17864494354">
               <p className="contactBody"><img className="contactImg" src="phone.png">
               </img>(786) 449-4354</p>
@@ -243,7 +241,7 @@ class BurglarAlarms extends React.Component {
               </img>eperez@firelinktech.com</p>
             </a>
           </div>
-          <div style={{width:"270px", paddingLeft:"100px"}} className="contactContainer">
+          <div style={{width:"270px"}} className="contactContainer">
             <p className="contactBody"><img style={{width:"25px"}} className="contactImg" src="marker.png">
             </img>10277 NW 128th Terrace, Hialeah Gardens, FL 33018</p>
             <p className="contactBody"><img style={{width:"29px"}} className="contactImg" src="state-license.png">

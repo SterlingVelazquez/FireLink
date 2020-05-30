@@ -412,7 +412,7 @@
 
 @media only screen and (max-width:722px) {
     .burgIntroDiv {
-        padding:10rem 2rem 2rem 0rem;
+        padding:7rem 2rem 2rem 0rem;
     }
     .burgIntroDiv .burgIntroContainer {
         margin-left:4%;
@@ -474,8 +474,11 @@
 }
 
 @media only screen and (max-width:440px) {
+    .burgIntroDiv {
+        padding-top:6rem;
+    }
     .burgSignIn {
-        left:2.5%;
+        left:1.5%;
         width:80%;
         margin:30px 0 30px 0;
         font-size:14px;
@@ -505,7 +508,7 @@
     }
     .burgFilesContainer {
         width:80%;
-        top:170px;
+        top:160px;
     }
     .burgFile {
         width:82%;

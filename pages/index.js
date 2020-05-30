@@ -50,7 +50,7 @@ class Home extends React.Component {
 
   scrollDown() {
     window.scrollTo({
-      top:1000,
+      top:100000,
       behavior:'smooth'
     });
   }
@@ -61,6 +61,7 @@ class Home extends React.Component {
         <Head>
           <title>FireLink Tech Inc.</title>
           <link rel="icon" href="favicon.ico" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
           <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet"></link>
           <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;800&display=swap" rel="stylesheet"></link>
@@ -94,9 +95,7 @@ class Home extends React.Component {
         <div id="sidenav" className="sideNavBar">
           <img src="customLogo.png"></img>
           <div id="servicesSideDrop" className="sideDropdown" onClick={e => this.toggleSideActive()}>
-            <button style={{top:"50px"}}><b>SERVICES</b>
-              <img src="down-arrow.png" className="sideDownArrow"></img>
-            </button> 
+            <button style={{top:"50px"}}><b>SERVICES</b></button> 
             <div className="sideDropdown-content">
               <Link href="/BurglarAlarms">
                 <a href="#"><b>Burglar Alarm Systems</b></a>

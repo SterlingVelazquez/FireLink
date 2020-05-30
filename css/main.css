@@ -153,13 +153,13 @@ body {
 .sideNavBar button {
     position:relative;
     background:none;
-    top:-22px;
+    top:-1.6%;
     border:none;
     color:rgb(82, 98, 129);
     text-shadow:2px 2px 5px rgb(202, 202, 202);
-    padding:40px 40px;
+    padding:7.5% 13.5%;
     font-size:28px;
-    margin-right:8%;
+    margin-right:13%;
     cursor:pointer;
     transition:0.5s;
 }
@@ -171,7 +171,7 @@ body {
     position:absolute;
     width:16px;
     height:auto;
-    top:51px;
+    top:42px;
     right:8px;
 }
 .sideNavBar .sideDropdown {
@@ -185,7 +185,7 @@ body {
 .sideDropdown-content {
     display: inline-block;
     position: relative;
-    top:20px;
+    top:2.8%;
     background: transparent;
     width:100%;
     height:0;
@@ -217,9 +217,9 @@ body {
 
 .sideNavBar .menuMover {
     position:relative;
-    top:60px;
+    top:4%;
     left:15px;
-    padding:10px 22px;
+    padding:6px 18px;
     background:transparent;
     border:3px solid rgb(82, 98, 129);
     border-radius:60px;
@@ -232,7 +232,7 @@ body {
     background:rgb(231, 231, 231);
 }
 .sideNavBar .moverImg {
-    width:30px;
+    width:24px;
     height:auto;
     margin-bottom:30px;
     margin-left:2px;
@@ -565,7 +565,6 @@ button {
   }
 
   footer img {
-    margin-left: 0.5rem;
     transition:0.3s;
   }
 
@@ -791,19 +790,23 @@ button {
 
     .navigationBar {
         text-align:center;
-        min-height:60px;
     }
     .navigationBar img {
         position:relative;
-        width: 18em;
+        width: 15em;
         left:auto;
-        right:8px;
+        right:12px;
     }
     .navigationBar button {
         display:none;
     }
     .navigationBar .menuBtn {
         display:block;
+        font-size:22px;
+    }
+    .menuBtn .menuBtnImg {
+        width:20px;
+        margin-left:25px;
     }
     .navigationBar .downArrow {
         width:14px;
@@ -824,6 +827,7 @@ button {
 
     .introDiv {
         width:auto;
+        padding-top:5rem;
     }
     .introDiv .introContainer {
         display:none;
@@ -914,7 +918,7 @@ button {
   @media only screen and (max-width:722px) {
 
     .navigationBar {
-        min-height:130px;
+        min-height:90px;
     }
     .navigationBar button {
         display:none;
@@ -956,10 +960,14 @@ button {
         margin-right:auto;
     }
     
+    .smallSubIntro .smallIntroSubContainer {
+        padding:0;
+    }
     .smallIntroSubContainer {
-        padding-top:10px;
+        display:none;
     }
     .smallIntroSubContainer p {
+        display:none;
         white-space:nowrap;
         padding-left:20px;
         font-size:14px;
@@ -968,7 +976,7 @@ button {
         padding-top:10px;
         width:20px;
     }
-
+    
     .serviceDiv .serviceImg {
         padding-bottom:0rem;
         width:100%;
@@ -987,6 +995,7 @@ button {
     .smallServiceDiv .smallServiceContainer {
         width:90%;
         margin-top:10px;
+        margin-left:0px;
     }
 
     .contactDiv .contactContainer {

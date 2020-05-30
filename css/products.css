@@ -78,7 +78,11 @@
 
 @media only screen and (max-width:722px) {
     .productIntroDiv {
-        padding-top:12rem;
+        padding-top:11rem;
+    }
+
+    .gridContainer {
+        margin-left:0%;
     }
 
     .productHeader {
