@@ -22,28 +22,29 @@ class Database {
     }
 
     async add(page, files, email, uid, username) {
-        //document.getElementById("loader").style.display = "none"
         var date = await this.setDate();
         for (var i=0; i < files.length; i++) {
-            await firebase.storage().ref(page).child(files[i].name + email).put(files[i])
-            await firebase.database().ref(page + '/' + files[i].lastModified + uid).set({
-                name:files[i].name,
-                username:username,
-                size:files[i].size,
-                timestamp: (+ new Date) * -1,
-                date:date,
-                ref:files[i].name + email,
-                email:email,
-                lastModified:files[i].lastModified,
-            }, async function(error) {
-                if (error) {
-                    // Upload failed
-                } else {
-                    // Upload success
-                }
+            await firebase.storage().ref(page).child(files[i].name + email).put(files[i]).then(async res => {
+                await firebase.database().ref(page + '/' + files[i].lastModified + uid).set({
+                    name:files[i].name,
+                    username:username,
+                    size:files[i].size,
+                    timestamp: (+ new Date) * -1,
+                    date:date,
+                    ref:files[i].name + email,
+                    email:email,
+                    lastModified:files[i].lastModified,
+                }, async function(error) {
+                    if (error) {
+                        // Upload failed
+                    } else {
+                        // Upload success
+                    }
+                })
+            }).catch(function (error) {
+                console.log("PDF Files Only")
             })
         }
-        //document.getElementById("loader").style.display = "block"
     }
 
     async erase(page, file, uid) {

@@ -224,7 +224,7 @@ class BurglarAlarms extends React.Component {
           </div>
 
           <div style={{display:"none"}} id="burgSideview" className="burgSideContainer">
-              <input onClick={e => this.showFiles()} type="file" id="fileUploader" className="addFile" accept=".pdf" multiple></input>
+              <input onClick={e => this.showFiles()} type="file" id="fileUploader" className="addFile" multiple></input>
               <p onClick={e => this.signOut()} className="signOut" id="signout">Sign Out</p>
           </div>
         </div>
