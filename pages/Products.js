@@ -193,10 +193,14 @@ class Products extends React.Component {
         <div className="contactDiv">
           <p className="contactHeader">Contact Us</p>
           <div className="contactContainer">
-            <p className="contactBody"><img className="contactImg" src="phone.png">
-            </img>(786) 449-4354</p>
-            <p className="contactBody"><img className="contactImg" src="envelope.png">
-            </img>eperez@firelinktech.com</p>
+            <a href="tel:+17864494354">
+              <p className="contactBody"><img className="contactImg" src="phone.png">
+              </img>(786) 449-4354</p>
+            </a>
+            <a href="mailto:eperez@firelinktech.com">
+              <p className="contactBody"><img className="contactImg" src="envelope.png">
+              </img>eperez@firelinktech.com</p>
+            </a>
           </div>
           <div style={{width:"270px"}} className="contactContainer">
             <p className="contactBody"><img style={{width:"25px"}} className="contactImg" src="marker.png">
