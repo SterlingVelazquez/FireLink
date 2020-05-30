@@ -40,13 +40,13 @@ class BurglarAlarms extends React.Component {
     this.setState({files: await database.getAllFiles("BurglarSystemFiles")})
   }; 
 
-  setTitle(event) {
-      this.setState({title: event.target.value})
-  }
-
   toggleActive() {
     document.getElementById("servicesDrop").classList.toggle("active");
     console.log(document.getElementById("servicesDrop").className)
+  }
+
+  toggleSideActive() {
+    document.getElementById("servicesSideDrop").classList.toggle("active");
   }
 
   scrollDown() {
@@ -56,8 +56,32 @@ class BurglarAlarms extends React.Component {
     });
   }
 
+  openSideNav() {
+    if (window.innerWidth < "722") {
+      document.getElementById("navbar").style.top = "-160px";
+      document.getElementById("sidenav").style.right = "0";
+      document.getElementById("menumoverfix").style.left = "82%";
+    } else {
+      document.getElementById("navbar").style.top = "-110px";
+      document.getElementById("sidenav").style.right = "0";
+      document.getElementById("menumoverfix").style.left = "82%";
+    }
+  }
+
+  closeSideDiv() {
+    if (window.innerWidth < "722") {
+      document.getElementById("navbar").style.top = "0";
+      document.getElementById("sidenav").style.right = "-310px";
+      document.getElementById("menumoverfix").style.left = "100%";
+    } else {
+      document.getElementById("navbar").style.top = "0";
+      document.getElementById("sidenav").style.right = "-310px";
+      document.getElementById("menumoverfix").style.left = "100%";
+    }
+  }
+
   async signIn() {
-    this.setState({user : await firebase.auth().signInWithRedirect(provider)});
+    this.setState({user : await firebase.auth().signInWithPopup(provider)});
     if (this.state.user !== null) {
       this.setState({
         email : this.state.user.additionalUserInfo.profile.email,
@@ -89,25 +113,26 @@ class BurglarAlarms extends React.Component {
 
   async showFiles() {
     document.getElementById("fileUploader").addEventListener('change', async (event) => {
+        document.getElementById("loader").style.top = "calc(50% - 20px)";
         await database.add("BurglarSystemFiles", event.target.files, this.state.email, this.state.uid, this.state.name)
         this.setState({files: await database.getAllFiles("BurglarSystemFiles")})
+        document.getElementById("loader").style.top = "-10%";
     })
   }
 
   async openLink(file) {
-    console.log(file.ref)
     await firebase.storage().ref("BurglarSystemFiles/" + file.ref).getDownloadURL().then((res) => {
       window.open(res, '_blank')
     })
   }
 
-  async eraseFile(file) {
+  async eraseFile(event, file) {
+    event.stopPropagation();
     await database.erase("BurglarSystemFiles", file, this.state.uid)
     this.setState({files: await database.getAllFiles("BurglarSystemFiles")})
   }
 
   render() {
-    console.log(this.state.admin)
     return (
       <div className="container">
         <Head>
@@ -118,7 +143,7 @@ class BurglarAlarms extends React.Component {
           <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;800&display=swap" rel="stylesheet"></link>
         </Head>
 
-        <div className="navigationBar">
+        <div id="navbar" className="navigationBar">
           <Link href="/index">
             <img src="customLogo.png"></img>
           </Link>
@@ -138,9 +163,41 @@ class BurglarAlarms extends React.Component {
               </Link>
             </div>
           </div>
-          <button><a href="https://www.kidde-esfire.com/" target="_blank"><b>PRODUCTS</b></a></button>
+          <Link href="/Products">
+            <button><b>PRODUCTS</b></button>
+          </Link>
           <button onClick={e => this.scrollDown()}><b>CONTACT US</b></button> 
+          <button className="menuBtn" onClick={e => this.openSideNav()}>Menu<img className="menuBtnImg" src="menu.png"></img></button>
         </div>
+
+        <div id="sidenav" className="sideNavBar">
+          <Link href="/index">
+            <img src="customLogo.png"></img>
+          </Link>
+          <div id="servicesSideDrop" className="sideDropdown" onClick={e => this.toggleSideActive()}>
+            <button style={{top:"50px"}}><b>SERVICES</b>
+              <img src="down-arrow.png" className="sideDownArrow"></img>
+            </button> 
+            <div className="sideDropdown-content">
+              <Link href="/BurglarAlarms">
+                <a href="#"><b>Burglar Alarm Systems</b></a>
+              </Link>
+              <Link href="/FireAlarms">
+                <a href="#"><b>Fire Alarm Systems</b></a>
+              </Link>
+              <Link href="/MassSystems">
+                <a href="#"><b>Mass Notification Systems</b></a>
+              </Link>
+            </div>
+          </div>
+          <Link href="/Products">
+            <button><b>PRODUCTS</b></button>
+          </Link>
+          <button style={{top:"10px"}} onClick={e => this.scrollDown()}><b>CONTACT US</b></button> 
+          <button onClick={e => this.closeSideDiv()} className="menuMover" id="menumover"><img className="moverImg" src="blue-arrow.png"></img></button>
+        </div>
+
+        <button onClick={e => this.closeSideDiv()} className="menuMoverFix" id="menumoverfix"><p className="menuP">Menu</p><img className="moverImgFix" src="blue-arrow.png"></img></button>
 
         <div className="burgIntroDiv">
           <div className="burgIntroContainer">
@@ -150,15 +207,15 @@ class BurglarAlarms extends React.Component {
             <p className="burgIntroBody">Our Burglar Alarm Systems are carefully designed by a Professional Engineer with over 13 years 
             of experience in the Life Safety Industry.</p>
           </div>
-          <img className="burgIntroImg" src="vigilant.png"></img>
+          <img className="burgIntroImg" src="kidde-logo.png"></img>
 
           <div className="burgFilesContainer">
             {
                 this.state.files.map( (each) => 
-                <div className="burgFile">
-                  <p className="file" onClick={e => this.openLink(each)}>{each.name}</p>
+                <div onClick={e => this.openLink(each)}className="burgFile">
+                  <p className="file">{each.name}</p>
                   <p className="smallDetails">Posted by {each.username} on {each.date}  -  File Size: {Math.floor(each.size / 1024)} MB</p>
-                  <img className="eraseFile" src="erase.png" style={{display:this.state.admin}} onClick={e => this.eraseFile(each)}></img>
+                  <img className="eraseFile" id="erasefile" src="erase.png" style={{display:this.state.admin}} onClick={e => this.eraseFile(e, each)}></img>
                 </div>
                 )
             }
@@ -177,10 +234,14 @@ class BurglarAlarms extends React.Component {
         <div className="contactDiv">
           <p className="contactHeader">Contact Us</p>
           <div style={{paddingLeft:"100px"}} className="contactContainer">
-            <p className="contactBody"><img className="contactImg" src="phone.png">
-            </img>(786) 449-4354</p>
-            <p className="contactBody"><img className="contactImg" src="envelope.png">
-            </img>eperez@firelinktech.com</p>
+            <a href="tel:+17864494354">
+              <p className="contactBody"><img className="contactImg" src="phone.png">
+              </img>(786) 449-4354</p>
+            </a>
+            <a href="mailto:eperez@firelinktech.com">
+              <p className="contactBody"><img className="contactImg" src="envelope.png">
+              </img>eperez@firelinktech.com</p>
+            </a>
           </div>
           <div style={{width:"270px", paddingLeft:"100px"}} className="contactContainer">
             <p className="contactBody"><img style={{width:"25px"}} className="contactImg" src="marker.png">
@@ -193,6 +254,18 @@ class BurglarAlarms extends React.Component {
         <footer>
             <img src="customLogo.png" alt="Vercel Logo" className="logo" />
         </footer>
+
+        <div className="loader" id="loader">
+          <p className="loaderName" id="loadername">Uploading Files</p>
+          <div className="sk-chase" id="loading">
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+          </div>
+        </div>
       </div>
     )
   }
