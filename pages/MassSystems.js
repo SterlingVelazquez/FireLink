@@ -192,7 +192,7 @@ class MassSystems extends React.Component {
           <Link href="/Products">
             <button><b>PRODUCTS</b></button>
           </Link>
-          <button style={{top:"10px"}} onClick={e => this.scrollDown()}><b>CONTACT US</b></button> 
+          <button style={{top:"40px"}} onClick={e => this.scrollDown()}><b>CONTACT US</b></button> 
           <button onClick={e => this.closeSideDiv()} className="menuMover" id="menumover"><img className="moverImg" src="blue-arrow.png"></img></button>
         </div>
 
